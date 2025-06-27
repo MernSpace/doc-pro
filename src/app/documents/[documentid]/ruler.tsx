@@ -1,3 +1,6 @@
+'use client'
+
+
 const markers = Array.from({ length: 83 }, (_, i) => i)
 import { FaCaretDown } from "react-icons/fa"
 import { useState, useRef } from "react"
@@ -59,8 +62,8 @@ export const Ruler = () => {
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
-            className="h-6 border-b border-gray-300 flex items-end relative selec-none print:hidden">
-            <div id="ruler-container" className="max-w-[816px] mx-auto w-full h-full relative">
+            className="w-[816px] mx-auto h-6 border-b border-gray-300 flex items-end relative selec-none print:hidden">
+            <div id="ruler-container" className="w-full h-full relative">
                 <Marker
                     position={leftMargin}
                     isLeft={true}
@@ -139,7 +142,16 @@ const Marker = ({
             onDoubleClick={onDoubleClick}
         >
             <FaCaretDown className="absolute left-1/2 top-0 h-full fill-blue-500 transform -translate-x-1/2" />
-
+            <div
+            className="absolute left-1/2 transform -translate-x-1/2 transition-opacity duration-150"
+            style={{
+                height:"100vh",
+                width:"1px",
+                transform:"scaleX(0.5)",
+                backgroundColor:"#3b72f6",
+                display:isDragging ? "block" : "none",
+            }}
+            />
         </div>
     )
 }
