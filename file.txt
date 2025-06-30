@@ -1,0 +1,42 @@
+auth.config.ts
+
+
+export default {
+    Provider: [
+        {
+            domain: "https://cute-ostrich-57.clerk.accounts.dev",
+            applicationID: "convex"
+        }
+    ]
+}
+
+documents.ts
+// convex/documents.ts
+import { query } from "./_generated/server";
+
+export const getAllDocuments = query({
+    handler: async (ctx) => {
+        return await ctx.db.query("newDocuments").collect();
+    },
+});
+schema.ts
+import { defineSchema, defineTable } from "convex/server";
+import { v } from "convex/values";
+
+export default defineSchema({
+    newDocuments: defineTable({
+        title: v.string(),
+        initialContent: v.optional(v.string()),
+        ownerId: v.string(),
+        roomId: v.optional(v.string()),
+        organizationId: v.optional(v.string())
+
+    })
+        .index("by_owner_id", ["ownerId"])
+        .index("by_organization_id", ['organizationId'])
+        .searchIndex("search_title", {
+            searchField: 'title',
+            filterFields: ['ownerId', 'organizationId']
+        })
+
+});
