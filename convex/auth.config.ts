@@ -1,9 +1,9 @@
 
 
 export default {
-    Provider: [
+    providers: [
         {
-            domain: "https://cute-ostrich-57.clerk.accounts.dev",
+            domain: "https://intent-peacock-31.clerk.accounts.dev",
             applicationID: "convex"
         }
     ]
