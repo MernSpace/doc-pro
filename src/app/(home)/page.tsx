@@ -1,18 +1,13 @@
 "use client";
 
-import { useQuery } from 'convex/react';
+import { usePaginatedQuery, useQuery } from 'convex/react';
 import { NavBar } from './navbar';
 import { TamplatesGallary } from './tamplates-gallary';
 import { api } from '../../../convex/_generated/api';
+import { DocumentsTable } from './documents-table';
 
 export default function Home() {
-  const documents = useQuery(api.document.getAllDocuments);
-
-  if (documents === undefined) {
-    return (
-      <p>Loading...</p>
-    )
-  }
+  const { results, status, loadMore } = usePaginatedQuery(api.document.getAllDocuments, {}, { initialNumItems: 5 });
 
   return (
     <div className='min-h-screen flex flex-col'>
@@ -21,6 +16,12 @@ export default function Home() {
       </div>
       <div className='mt-16'>
         <TamplatesGallary />
+
+        <DocumentsTable
+          documents={results}
+          loadMore={loadMore}
+          status={status}
+        />
 
       </div>
     </div>

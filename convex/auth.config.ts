@@ -1,10 +1,8 @@
-
-
 export default {
     providers: [
         {
-            domain: "https://intent-peacock-31.clerk.accounts.dev",
-            applicationID: "convex"
-        }
+            domain: "https://cheerful-gazelle-35.clerk.accounts.dev",
+            applicationID: "convex",
+        },
     ]
-}
+};

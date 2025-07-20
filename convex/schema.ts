@@ -2,7 +2,7 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
-    newDocuments: defineTable({
+    Documents: defineTable({
         title: v.string(),
         initialContent: v.optional(v.string()),
         ownerId: v.string(),
