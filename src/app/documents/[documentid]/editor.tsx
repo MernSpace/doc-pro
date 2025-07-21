@@ -22,41 +22,42 @@ import { Color } from '@tiptap/extension-color'
 import Highlight from '@tiptap/extension-highlight'
 import Link from '@tiptap/extension-link'
 import TextAlign from '@tiptap/extension-text-align'
-import {FontSizeExtension} from "@/extensions/font-size"
+import { FontSizeExtension } from "@/extensions/font-size"
 import { LineHeightExtension } from "@/extensions/line-hight"
 import { Ruler } from "./ruler"
-import { Navbar } from "./navbar"
-
+import { useLiveblocksExtension } from "@liveblocks/react-tiptap"
+import { Threads } from "./threads"
 
 
 export const Editor = () => {
-    
-    const {setEditor} = useEditorStore()
-    
+    const liveblocks = useLiveblocksExtension()
+
+    const { setEditor } = useEditorStore()
+
     const editor = useEditor({
-        immediatelyRender:false,
-        onCreate({editor}){
+        immediatelyRender: false,
+        onCreate({ editor }) {
             setEditor(editor)
         },
-        onDestroy(){
+        onDestroy() {
             setEditor(null)
         },
-        onUpdate({editor}){
+        onUpdate({ editor }) {
             setEditor(editor)
         },
-        onSelectionUpdate({editor}){
+        onSelectionUpdate({ editor }) {
             setEditor(editor)
         },
-         onTransaction({editor}){
+        onTransaction({ editor }) {
             setEditor(editor)
         },
-         onFocus({editor}){
+        onFocus({ editor }) {
             setEditor(editor)
         },
-         onBlur({editor}){
+        onBlur({ editor }) {
             setEditor(editor)
         },
-         onContentError({editor}){
+        onContentError({ editor }) {
             setEditor(editor)
         },
         editorProps: {
@@ -66,14 +67,17 @@ export const Editor = () => {
             }
         },
         extensions: [
+            liveblocks,
             TaskItem.configure({
                 nested: true
             }),
-            StarterKit,
+            StarterKit.configure({
+                history: false
+            }),
             Link.configure({
-                openOnClick:false,
-                autolink:true,
-                defaultProtocol:"https"
+                openOnClick: false,
+                autolink: true,
+                defaultProtocol: "https"
             }),
             Table,
             TableCell,
@@ -88,21 +92,22 @@ export const Editor = () => {
             Color,
             Highlight.configure({ multicolor: true }),
             TextAlign.configure({
-                types:['heading','paragraph']
+                types: ['heading', 'paragraph']
             }),
             FontSizeExtension,
             LineHeightExtension.configure({
-                types:['heading','paragraph']
+                types: ['heading', 'paragraph']
             }),
-            ]
+        ]
     })
 
 
     return (
         <div className="size-full  overflow-x-auto bg-[#F9FBFD] px-4 print:p-0 print:bg-white print:overflow-visible">
-            <Ruler/>
+            <Ruler />
             <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
                 <EditorContent editor={editor} />
+                <Threads editor={editor} />
             </div>
         </div>
     )

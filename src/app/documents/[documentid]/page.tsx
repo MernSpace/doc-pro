@@ -3,14 +3,15 @@
 
 import { Editor } from "./editor";
 import { Navbar } from "./navbar";
+import { Room } from "./room";
 import { Toolbar } from "./toolbar";
 
 interface DocumentsIdPageProps {
-    params: Promise<{ documentid: string }>
+    params: Promise<{ documentId: string }>
 }
 
 const DocumentIdPage = async ({ params }: DocumentsIdPageProps) => {
-    const { documentid } = await params;
+    const { documentId } = await params;
 
     return (
         <div className="min-h-screen bg-[#FAFBFD]">
@@ -19,7 +20,9 @@ const DocumentIdPage = async ({ params }: DocumentsIdPageProps) => {
                 <Toolbar />
             </div>
             <div className="pt-[114px] print:pt-0">
-                <Editor />
+                <Room>
+                    <Editor />
+                </Room>
             </div>
         </div>
     );
