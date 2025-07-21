@@ -2,6 +2,8 @@ import { PaginationStatus } from "convex/react";
 import { Doc } from "../../../convex/_generated/dataModel"
 import { LoaderIcon } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { DocumentRow } from "./document-row";
+import { Button } from "@/components/ui/button";
 
 interface DocumentsTableProps {
     documents: Doc<"Documents">[] | undefined;
@@ -26,8 +28,8 @@ export const DocumentsTable = ({
                         <TableRow className="hover:bg-transparent border-none">
                             <TableHead>Name</TableHead>
                             <TableHead>&nbsp;</TableHead>
-                            <TableHead>Shared</TableHead>
-                            <TableHead>Created at</TableHead>
+                            <TableHead className="hidden md:table-cell">Shared</TableHead>
+                            <TableHead className="hidden md:table-cell">Created at</TableHead>
                         </TableRow>
                     </TableHeader>
 
@@ -39,10 +41,30 @@ export const DocumentsTable = ({
                                 </TableCell>
                             </TableRow>
                         </TableBody>
-                    ) : null}
+                    ) : (
+                        <TableBody>
+                            {
+                                documents.map((document) => (
+                                    <DocumentRow key={document._id} document={document} />
+                                ))
+                            }
+                        </TableBody>
+                    )}
 
                 </Table>
             )}
+
+
+            <div className="flex items-center justify-center">
+                <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => loadMore(5)}
+                    disabled={status !== "CanLoadMore"}
+                >
+                    {status === "CanLoadMore" ? "Load more" : "End of resutls"}
+                </Button>
+            </div>
         </div>
     )
 }
