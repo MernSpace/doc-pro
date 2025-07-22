@@ -1,5 +1,4 @@
-
-'use client'
+'use client';
 import { cn } from "@/lib/utils";
 import { LucideIcon, Undo2Icon, Redo2Icon, PrinterIcon, SpellCheckIcon, BoldIcon, ItalicIcon, UnderlineIcon, MessageSquarePlusIcon, ListTodoIcon, RemoveFormattingIcon, ChevronDownIcon, HighlighterIcon, Link2Icon, ImageIcon, UploadIcon, SearchIcon, AlignLeftIcon, AlignCenterIcon, AlignRightIcon, AlignJustifyIcon, ListIcon, ListOrderedIcon, MinusIcon, PlusIcon, ListCollapseIcon } from "lucide-react";
 
