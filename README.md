@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 DocPro — Real-Time Collaborative Document Editor
 
-## Getting Started
+DocPro is a modern, full-featured real-time collaborative document editor, built with **Next.js 15**, **React 18**, **Liveblocks**, **Clerk authentication**, and **Tiptap editor**. It allows multiple users to work together on documents seamlessly, with support for rich-text formatting, collaboration cursors, presence indicators, and powerful UI components.
 
-First, run the development server:
+> 🧠 Built by Saharul Sifat to explore modern full-stack real-time collaboration using Liveblocks, Clerk, Tiptap, Radix UI, and Tailwind CSS.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔗 Live Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+👉 [doc-pro-flame.vercel.app](https://doc-pro-flame.vercel.app)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⚙️ Features
 
-To learn more about Next.js, take a look at the following resources:
+- 🔐 **Authentication** with Clerk (OAuth, email, 2FA)
+- 📄 **Rich-text editing** with [Tiptap](https://tiptap.dev)
+- 🤝 **Real-time collaboration** with Liveblocks
+- 🧑‍🤝‍🧑 Presence indicators & user cursors
+- 🖼️ Image resizing & media embedding
+- 🎨 Text formatting, links, highlights, colors, tasks, tables
+- 📁 Document management with access controls
+- 🎚️ Elegant UI built using **Radix UI**, **Tailwind CSS**, and **shadcn/ui**
+- 🗓️ Date pickers, dialogs, tooltips, popovers, dropdowns, modals
+- 📦 State management with Zustand
+- 🧪 Validations with Zod & React Hook Form
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧑‍💻 Tech Stack
 
-## Deploy on Vercel
+| Tech         | Purpose                          |
+|--------------|----------------------------------|
+| **Next.js 15**     | React framework (App Router)     |
+| **React 18.3**     | UI Library                       |
+| **Liveblocks**     | Real-time presence & collaboration |
+| **Clerk**          | Authentication & user management |
+| **Tiptap**         | Headless WYSIWYG Editor          |
+| **Tailwind CSS**   | Styling                          |
+| **Radix UI**       | Accessible, low-level UI         |
+| **Zod**            | Schema validation                |
+| **Zustand**        | Global state management          |
+| **Date-fns**       | Date utilities                   |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Folder Structure (Simplified)
+
