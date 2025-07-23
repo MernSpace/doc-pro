@@ -6,11 +6,11 @@ import { DocumentPage } from "./document";
 import { preloadQuery } from "convex/nextjs";
 import { api } from "../../../../convex/_generated/api";
 
-interface DocumentsIdPageProps {
+const DocumentIdPage = async ({
+    params,
+}: {
     params: { documentId: string };
-}
-
-const DocumentIdPage = async ({ params }: DocumentsIdPageProps) => {
+}) => {
     const documentId = params.documentId as Id<"Documents">;
 
     const { getToken } = await auth();
