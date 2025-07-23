@@ -81,7 +81,7 @@ export const DocumentInput = ({
             {showError && <BsCloudSlash className='size-4' />}
             {!showError && !showLoader && <BsCloudCheck className='size-4' />}
             {showLoader && <LoaderIcon className='size-4 animate-spin text-muted-foreground' />}
-            <BsCloudCheck />
+
         </div>
     )
 }
