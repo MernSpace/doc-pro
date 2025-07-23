@@ -30,13 +30,14 @@ export async function POST(req: Request) {
     const isOrganizationMember = !!(
         document.organizationId &&
         sessionClaims.o &&
-        document.organizationId === sessionClaims.o.id
+        document.organizationId === (sessionClaims.o as { id: string }).id
     );
 
 
     if (!isOwner && !isOrganizationMember) {
         throw new Response("Unauthorized", { status: 401 })
     }
+
 
     const session = liveblocks.prepareSession(user.id, {
         userInfo: {

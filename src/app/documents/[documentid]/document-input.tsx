@@ -37,6 +37,7 @@ export const DocumentInput = ({
 
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         mutate({ id, title: value })
             .then(() => { toast.success("Document updated"); setIsEditing(false) })
             .catch(() => toast.error("Something went wrong"))
