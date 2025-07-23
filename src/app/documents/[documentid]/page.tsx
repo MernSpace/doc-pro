@@ -1,3 +1,4 @@
+"use server";
 import { auth } from "@clerk/nextjs/server";
 import { Id } from "../../../../convex/_generated/dataModel";
 import { DocumentPage } from './document'
