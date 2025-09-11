@@ -18,6 +18,7 @@ type User = { id: string; name: string; avatar: string }
 export function Room({ children }: { children: ReactNode }) {
 
     const params = useParams();
+    const roomId = params.documentid as string;
     const [users, setUsers] = useState<User[]>([])
     const fetchUser = useMemo(
         () => async () => {
@@ -38,7 +39,7 @@ export function Room({ children }: { children: ReactNode }) {
             throttle={16}
             authEndpoint={async () => {
                 const endpoint = "/api/liveblocks-auth"
-                const room = params.documentId as string;
+                const room = roomId;
                 const response = await fetch(endpoint, {
                     method: "POST",
                     body: JSON.stringify({ room })
@@ -67,7 +68,7 @@ export function Room({ children }: { children: ReactNode }) {
                 }))
             }}
         >
-            <RoomProvider id={params.documentId as string}
+            <RoomProvider id={roomId}
                 initialStorage={{ leftMargin: LEFT_MARGIN_DEFAULT, rightMargin: RIGHT_MARGIN_DEFAULT }}
             >
                 <ClientSideSuspense fallback={<FullscreenLoader label="Room Loadding ...." />}>
